@@ -1,0 +1,16 @@
+<body>
+    <button onclick="sendRequest('hello')">Send request to /hello</button>
+    <button onclick="sendRequest('bypass')">Send request to /bypass</button>
+
+    Note: I couldn't get this working, it always throws a CORS error.
+    The regex match isn't working. Probably some `if` weirdness?
+</body>
+
+<script>
+    function sendRequest(path) {
+        fetch(`http://nginx-test.local:1234/${path}`)
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+    }
+</script>
